@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 
 import gz.localemap.app.entity.Local;
 import gz.localemap.app.repository.LocalRepository;
+import gz.localemap.app.repository.LocalSpecifications;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -24,7 +25,8 @@ public class LocalServiceImpl implements LocalService {
 	@Override
 	public List<Local> getAllLocalByCategoria(@Valid @NotEmpty String categoria) {
 		log.info("LocalServiceImpl :: categoria ===> "+categoria);
-		List<Local> locales = localRepository.getAllLocalByCategoria(categoria);
+		//List<Local> locales = localRepository.getAllLocalByCategoria(categoria);
+		List<Local> locales = localRepository.findAll(LocalSpecifications.categoriaLike(categoria));
 		locales.stream().forEach(local->{log.info("LocalServiceImpl :: Locales ===> "+local);});
 		return locales;
 	}
