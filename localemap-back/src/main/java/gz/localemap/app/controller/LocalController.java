@@ -1,0 +1,27 @@
+package gz.localemap.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import gz.localemap.app.entity.Local;
+import gz.localemap.app.service.LocalService;
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@Slf4j
+public class LocalController {
+	
+	@Autowired
+	private LocalService localService;
+
+	@GetMapping(value = "/locales")
+	public List<Local> test() {	
+		List <Local> locales = localService.getAllLocalByCategoria("Restaurantes");
+		locales.stream().forEach(local->{log.info("Local....."+local);});
+		return locales;
+	}
+
+}
