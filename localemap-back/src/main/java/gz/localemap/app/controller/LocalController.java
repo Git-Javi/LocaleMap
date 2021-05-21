@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import gz.localemap.app.entity.Local;
+import gz.localemap.app.dto.LocalDto;
 import gz.localemap.app.service.LocalService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,11 +24,11 @@ public class LocalController {
 	private LocalService localService;
 
 	@GetMapping(value = "/locales/{categoria}")
-	public List<Local> getAllLocalByCategoria(@PathVariable("categoria") @Valid @NotEmpty String categoria) {	
+	public List<LocalDto> getAllLocalByCategoria(@PathVariable("categoria") @Valid @NotEmpty String categoria) {	
 		log.info("LocalController :: categoria ===> "+categoria);
-		List <Local> locales = localService.getAllLocalByCategoria(categoria.trim());
-		locales.stream().forEach(local->{log.info("LocalController :: Locales ===> "+local);});
-		return locales;
+		List <LocalDto> listaLocalesDto = localService.getAllLocalByCategoria(categoria.trim());
+		listaLocalesDto.stream().forEach(localDto->{log.info("LocalController :: LocalesDto ===> "+localDto);});
+		return listaLocalesDto;
 	}
 
 }
