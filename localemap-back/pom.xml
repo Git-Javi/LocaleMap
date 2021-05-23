@@ -9,7 +9,7 @@
 		<version>2.4.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>gz.localedata</groupId>
+	<groupId>gz.localemap.app</groupId>
 	<artifactId>LocaleMap</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LocaleMap</name>
@@ -21,6 +21,7 @@
 		<org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
 		<org.projectlombok.version>1.18.8</org.projectlombok.version>
 		<javax.validation.version>2.0.1.Final</javax.validation.version>
+		<org.apache.httpcomponents.version>4.5.9</org.apache.httpcomponents.version>
 	</properties>
 
 	<dependencies>
@@ -29,6 +30,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- ========================= Testing ======================== -->
+		<!-- Starter for testing Spring Boot applications with libraries including JUnit, Hamcrest and Mockito -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
