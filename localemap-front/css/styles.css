@@ -1,0 +1,19 @@
+/* Estilos varios*/
+
+h2,
+p {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+p {
+    margin-bottom: 25px;
+}
+
+
+/* Configuración del contenedor del mapa */
+
+#map {
+    height: 400px;
+    width: 100%;
+}

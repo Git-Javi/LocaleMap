@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Almacen de Productos</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script src="js/gMaps.js"></script>
+</head>
+
+<body>
+    <h2>Mapa de locales A Coruña</h2>
+    <p><select name="tipoLocal" id="selectTipoLocal">
+            <option disabled selected value>Selecciona una Catgoría</option>
+            <option value="Restaurantes">Restaurantes</option>
+            <option value="Bares">Bares</option>
+            <option value="Discotecas">Discotecas</option>
+    </select></p>
+    <!-- El contenedor donde se ubicará el mapa en la pag -->
+    <div id="map"></div>
+    <!-- El script asincrónico se ejecuta inmediatamente y debe estar después de cualquier elemento DOM utilizado en la devolución de llamada. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFQnofoyHy-YhhDUXDpOVJGjavqD0oYq0&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+
+</html>
