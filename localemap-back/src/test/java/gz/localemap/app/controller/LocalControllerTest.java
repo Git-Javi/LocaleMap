@@ -4,7 +4,10 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.mockito.Mockito.when;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +20,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.hamcrest.Matchers.is;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import gz.localemap.app.dto.LocalDto;
 import gz.localemap.app.service.LocalService;
+import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class) // Proporciona soporte para cargar un Spring ApplicationContext y tener beans @Autowired en la instancia de prueba (JUnit).
 @WebMvcTest(LocalController.class) // Prueba de Spring MVC que se enfoca solo en los componentes de Spring MVC (P.E: Controllers)
+@Slf4j
 public class LocalControllerTest {
 
 	@Autowired
@@ -45,9 +51,12 @@ public class LocalControllerTest {
 	     
 	    final String expectedResponseContent = objectMapper.writeValueAsString(listaLocalesTest);
 	    
-        this.mockMvc.perform(get("/locales/discotecas"))
+	    log.info("---------- LocalControllerTest ----------- :: response ===> "+expectedResponseContent);
+	    
+        this.mockMvc.perform(get("/locales/discotecas").param("categoria", "discotecas"))
             .andExpect(status().isOk())
             .andExpect(content().json(expectedResponseContent));
+            //.andExpect(model().attribute("categoria", is("discotecas")));
     
         verify(localService).getAllLocalByCategoria("Discotecas"); // verify that the repository was called correctly
     }
