@@ -27,8 +27,7 @@ public class LocalServiceImpl implements LocalService {
 
 	@Autowired
 	private LocalMapper localMapper;
-	//private LocalMapper localMapper =  Mappers.getMapper(LocalMapper.class);
-
+	
 	@Override
 	public List<LocalDto> getAllLocalByCategoria(@Valid @NotEmpty String categoria) {
 		log.info("LocalServiceImpl :: categoria ===> " + categoria);
