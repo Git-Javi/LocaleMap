@@ -30,7 +30,7 @@ function selectListener() {
 
 //------------------------------ Petición AJAX --------------------------------------
 // Permite obtener los locales de la categoría recibida por parámetros lanzando una consulta asíncrona al lado del servidor
-/*function getLocales(categoria) {
+function getLocales(categoria) {
     let locales;
     // Objeto de configuración de petición FETCH
     let configFetch = {
@@ -49,18 +49,8 @@ function selectListener() {
     }).catch(function(error) {
         console.log('Error con la petición:' + error.message);
     });
-}*/
-
-function getLocales(categoria) {
-    /*let configFetch = {
-        method: "GET",
-        mode: 'no-cors',
-    };*/
-    fetch("http://localhost:8080/locales/" + categoria).then((response) => reponse.json()).then(function(objetoJSON) {
-        locations = objetoJSON;
-        setLocations(map);
-    });
 }
+
 
 //------------------------------ GMaps --------------------------------------
 // https://developers.google.com/maps/documentation/javascript/adding-a-google-map
@@ -75,7 +65,7 @@ function initMap() {
     });
 }
 
-// Recibe por parámetros los resultados con los locales de la consulta en PHP a la base datos
+// Recibe por parámetros los resultados con los locales de la consulta del Back a la base datos
 function setLocations(map) {
     // Elimina los marcadores que haya de la anterior carga (En caso de que haya)
     if (markers.length > 0) { deleteMarkers(); }
@@ -94,7 +84,7 @@ function setLocations(map) {
     }
 }
 
-// Permite eliminar los marcadores del mapara a traves d ela referencia que está guardada en el array de markers
+// Permite eliminar los marcadores del mapara a traves de la referencia que está guardada en el array de markers
 function deleteMarkers() {
     markers.forEach(marker => {
         marker.setMap(null);
