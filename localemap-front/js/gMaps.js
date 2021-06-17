@@ -1,4 +1,4 @@
-window.addEventListener("load", initListeners);
+window.addEventListener('load', initListeners);
 
 // Declaración de variables para GMaps
 let marker = null;
@@ -15,8 +15,8 @@ function initListeners() {
 
 // Escuchador del submit del formulario, dependiendo en que botón se haga click realizará una acción u otra
 function selectListener() {
-    document.getElementById("selectTipoLocal").addEventListener("change", (e) => {
-        let options = document.getElementById("selectTipoLocal").options;
+    document.getElementById('selectTipoLocal').addEventListener('change', (e) => {
+        let options = document.getElementById('selectTipoLocal').options;
         let categoria;
         // Extrae el valor selecionado en el Select de Locales
         for (let i = 0; i < options.length; i++) {
@@ -34,14 +34,14 @@ function getLocales(categoria) {
     let locales;
     // Objeto de configuración de petición FETCH
     let configFetch = {
-        method: "GET",
-        //body: "categoria=" + categoria,
-        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        method: 'GET',
+        //body: 'categoria=' + categoria,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     };
     // Lanzamiento de la peticion AJAX con FETCH
-    fetch("http://localhost:8080/locales/" + categoria, configFetch).then(function(response) {
+    fetch('http://localhost:8080/locales/' + categoria, configFetch).then(function(response) {
         // La propiedad ok retorna true si se ha realizado correctamente
-        if (response.ok) { console.log("Respuesta OK"); }
+        if (response.ok) { console.log('Respuesta OK'); }
         response.json().then(function(objetoJSON) {
             locations = objetoJSON;
             setLocations(map);
@@ -59,7 +59,7 @@ function initMap() {
     // establecemos un punto incial para el centrado del mapa a en su creación
     let chios = { lat: 43.35745296321702, lng: -8.399676003063062 };
     // Creación del mapa centrado en la posición de Chios 
-    map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: chios,
     });
@@ -79,7 +79,7 @@ function setLocations(map) {
                 animation: google.maps.Animation.DROP,
             });
             marker.setMap(map); // Establece el punto creado, en la instancia de mapa que tenemos almacenada en map
-            markers.push(marker); // Añadimos el punto creado al array "Temporal" que contiene los puntos devueltos por al consulta
+            markers.push(marker); // Añadimos el punto creado al array 'Temporal' que contiene los puntos devueltos por al consulta
         });
     }
 }
