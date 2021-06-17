@@ -13,7 +13,7 @@ function initListeners() {
     selectListener();
 }
 
-// Escuchador del submit del formulario, dependiendo en que botón se haga click realizará una acción u otra
+// Escuchador del submit del formulario
 function selectListener() {
     document.getElementById('selectTipoLocal').addEventListener('change', (e) => {
         let options = document.getElementById('selectTipoLocal').options;
@@ -35,7 +35,6 @@ function getLocales(categoria) {
     // Objeto de configuración de petición FETCH
     let configFetch = {
         method: 'GET',
-        //body: 'categoria=' + categoria,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     };
     // Lanzamiento de la peticion AJAX con FETCH
